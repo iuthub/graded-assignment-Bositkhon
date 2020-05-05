@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+Route::get('/', 'TaskController@index')->name('default');
+Route::resource('task', 'TaskController', [
+    'except' => ['create', 'show']
+]);
